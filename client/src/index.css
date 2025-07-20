@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for canvas wrapper and cursors not easily done with pure Tailwind */
+.canvas-wrapper {
+  position: relative;
+  flex-grow: 1;
+  background-color: #fff;
+  border-radius: 8px;
+  margin: 1.25rem; /* 20px */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Important for canvas boundaries */
+}
+
+.drawing-canvas {
+  display: block;
+  background-color: transparent;
+  touch-action: none; /* Prevent browser touch gestures */
+}
+
+.user-cursor {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 12px solid; /* Color will come from JS */
+  transform: rotate(-45deg); /* Point to the top-left */
+  transform-origin: 50% 100%; /* Rotate around bottom center */
+  pointer-events: none;
+  z-index: 1000;
+  transition: left 0.05s linear, top 0.05s linear; /* Smooth movement */
+}
+
+.user-cursor .cursor-name {
+  position: absolute;
+  bottom: -25px; /* Position below the cursor */
+  left: -20px; /* Adjust to center or align */
+  /* Background and text color will be set dynamically by JS */
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-size: 0.7em;
+  white-space: nowrap; /* Keep name on one line */
+  transform: rotate(45deg); /* Counter-rotate to keep text straight */
+}

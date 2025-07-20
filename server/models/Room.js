@@ -27,13 +27,14 @@ const RoomSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now,
+    expires: "24h",
   },
   lastActivity: {
     type: Date,
     default: Date.now,
   },
-  
-    // Array to store drawing commands
+
+  // Array to store drawing commands
   drawingData: [DrawingCommandSchema],
 });
 
